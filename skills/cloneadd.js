@@ -17,7 +17,7 @@ module.exports = function(controller) {
            
             if(arrayOfEmails.length > 0){
                 arrayOfEmails.forEach(function(element) {
-                    var param = {"teamId": roomId, "roomId" : roomId, "personEmail" : element};
+                    var param = {"roomId" : roomId, "personEmail" : element};
                     spark.memberships.create(param, function(err, response) {
                        console.log(err);
                        console.log(response);
