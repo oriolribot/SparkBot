@@ -6,6 +6,7 @@ module.exports = function(controller) {
         var email = message.user;
         var CiscoSpark = require('node-ciscospark');
         var async = require('async');
+        var spark = new CiscoSpark(process.env.SPARK_TOKEN);
 
         var spaceSeperator = " ";
         var comaSeperator = ",";
@@ -17,7 +18,7 @@ module.exports = function(controller) {
            
             if(arrayOfEmails.length > 0){
                 arrayOfEmails.forEach(function(element) {
-                    var param = {"roomId" : roomId, "personEmail" : element};
+                    var param = {"teamId": roomId, "roomId" : roomId, "personEmail" : element};
                     spark.memberships.create(param, function(err, response) {
                        console.log(err);
                        console.log(response);
